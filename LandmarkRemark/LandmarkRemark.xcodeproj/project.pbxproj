@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039314C229BFAF500DA1E65 /* AppDelegate.swift */; };
-		3039314F229BFAF500DA1E65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039314E229BFAF500DA1E65 /* ViewController.swift */; };
+		3039314F229BFAF500DA1E65 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039314E229BFAF500DA1E65 /* WelcomeViewController.swift */; };
 		30393152229BFAF500DA1E65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30393150229BFAF500DA1E65 /* Main.storyboard */; };
 		30393154229BFAF900DA1E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30393153229BFAF900DA1E65 /* Assets.xcassets */; };
 		30393157229BFAF900DA1E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30393155229BFAF900DA1E65 /* LaunchScreen.storyboard */; };
 		30393162229BFAF900DA1E65 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30393161229BFAF900DA1E65 /* LandmarkRemarkTests.swift */; };
 		3039316D229BFAF900DA1E65 /* LandmarkRemarkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */; };
+		3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039317D229BFE6000DA1E65 /* Launcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		30393149229BFAF500DA1E65 /* LandmarkRemark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarkRemark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3039314C229BFAF500DA1E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3039314E229BFAF500DA1E65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3039314E229BFAF500DA1E65 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		30393151229BFAF500DA1E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30393153229BFAF900DA1E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30393156229BFAF900DA1E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		30393168229BFAF900DA1E65 /* LandmarkRemarkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarkRemarkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRemarkUITests.swift; sourceTree = "<group>"; };
 		3039316E229BFAF900DA1E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3039317D229BFE6000DA1E65 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,10 @@
 		3039314B229BFAF500DA1E65 /* LandmarkRemark */ = {
 			isa = PBXGroup;
 			children = (
+				3039317B229BFDFE00DA1E65 /* Models */,
+				3039317A229BFDFE00DA1E65 /* Scenes */,
+				3039317C229BFDFF00DA1E65 /* ViewModels */,
 				3039314C229BFAF500DA1E65 /* AppDelegate.swift */,
-				3039314E229BFAF500DA1E65 /* ViewController.swift */,
 				30393150229BFAF500DA1E65 /* Main.storyboard */,
 				30393153229BFAF900DA1E65 /* Assets.xcassets */,
 				30393155229BFAF900DA1E65 /* LaunchScreen.storyboard */,
@@ -123,6 +127,29 @@
 				3039316E229BFAF900DA1E65 /* Info.plist */,
 			);
 			path = LandmarkRemarkUITests;
+			sourceTree = "<group>";
+		};
+		3039317A229BFDFE00DA1E65 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3039314E229BFAF500DA1E65 /* WelcomeViewController.swift */,
+				3039317D229BFE6000DA1E65 /* Launcher.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3039317B229BFDFE00DA1E65 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3039317C229BFDFF00DA1E65 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039314F229BFAF500DA1E65 /* ViewController.swift in Sources */,
+				3039314F229BFAF500DA1E65 /* WelcomeViewController.swift in Sources */,
+				3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */,
 				3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
