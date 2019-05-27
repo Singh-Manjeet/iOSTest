@@ -15,6 +15,7 @@
 		30393162229BFAF900DA1E65 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30393161229BFAF900DA1E65 /* LandmarkRemarkTests.swift */; };
 		3039316D229BFAF900DA1E65 /* LandmarkRemarkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */; };
 		3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039317D229BFE6000DA1E65 /* Launcher.swift */; };
+		30393187229C15E300DA1E65 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30393186229C15E300DA1E65 /* Constants.swift */; };
 		FC3EFA8B017B832182884231 /* libPods-LandmarkRemark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C5F9F37791E7C996A5BDF8 /* libPods-LandmarkRemark.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRemarkUITests.swift; sourceTree = "<group>"; };
 		3039316E229BFAF900DA1E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3039317D229BFE6000DA1E65 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
+		30393186229C15E300DA1E65 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		50C5F9F37791E7C996A5BDF8 /* libPods-LandmarkRemark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LandmarkRemark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.debug.xcconfig"; sourceTree = "<group>"; };
 		706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,9 +108,10 @@
 		3039314B229BFAF500DA1E65 /* LandmarkRemark */ = {
 			isa = PBXGroup;
 			children = (
-				3039317B229BFDFE00DA1E65 /* Models */,
+				30393183229C15D100DA1E65 /* Helpers */,
+				30393185229C15D100DA1E65 /* Models */,
+				30393184229C15D100DA1E65 /* ViewModels */,
 				3039317A229BFDFE00DA1E65 /* Scenes */,
-				3039317C229BFDFF00DA1E65 /* ViewModels */,
 				3039314C229BFAF500DA1E65 /* AppDelegate.swift */,
 				30393150229BFAF500DA1E65 /* Main.storyboard */,
 				30393153229BFAF900DA1E65 /* Assets.xcassets */,
@@ -145,18 +148,26 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		3039317B229BFDFE00DA1E65 /* Models */ = {
+		30393183229C15D100DA1E65 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				30393186229C15E300DA1E65 /* Constants.swift */,
 			);
-			path = Models;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
-		3039317C229BFDFF00DA1E65 /* ViewModels */ = {
+		30393184229C15D100DA1E65 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		30393185229C15D100DA1E65 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8022B35258E26C4251259E2A /* Frameworks */ = {
@@ -173,7 +184,6 @@
 				6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */,
 				706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -337,6 +347,7 @@
 				3039314F229BFAF500DA1E65 /* WelcomeViewController.swift in Sources */,
 				3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */,
 				3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */,
+				30393187229C15E300DA1E65 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
