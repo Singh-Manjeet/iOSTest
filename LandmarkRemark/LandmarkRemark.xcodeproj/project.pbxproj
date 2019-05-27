@@ -15,6 +15,7 @@
 		30393162229BFAF900DA1E65 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30393161229BFAF900DA1E65 /* LandmarkRemarkTests.swift */; };
 		3039316D229BFAF900DA1E65 /* LandmarkRemarkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */; };
 		3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039317D229BFE6000DA1E65 /* Launcher.swift */; };
+		FC3EFA8B017B832182884231 /* libPods-LandmarkRemark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C5F9F37791E7C996A5BDF8 /* libPods-LandmarkRemark.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		3039316C229BFAF900DA1E65 /* LandmarkRemarkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRemarkUITests.swift; sourceTree = "<group>"; };
 		3039316E229BFAF900DA1E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3039317D229BFE6000DA1E65 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
+		50C5F9F37791E7C996A5BDF8 /* libPods-LandmarkRemark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LandmarkRemark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.debug.xcconfig"; sourceTree = "<group>"; };
+		706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC3EFA8B017B832182884231 /* libPods-LandmarkRemark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +88,8 @@
 				30393160229BFAF900DA1E65 /* LandmarkRemarkTests */,
 				3039316B229BFAF900DA1E65 /* LandmarkRemarkUITests */,
 				3039314A229BFAF500DA1E65 /* Products */,
+				90A46D8F8E0D6BF8E599F069 /* Pods */,
+				8022B35258E26C4251259E2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +159,24 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		8022B35258E26C4251259E2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50C5F9F37791E7C996A5BDF8 /* libPods-LandmarkRemark.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90A46D8F8E0D6BF8E599F069 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */,
+				706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +184,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30393171229BFAF900DA1E65 /* Build configuration list for PBXNativeTarget "LandmarkRemark" */;
 			buildPhases = (
+				2ED0884ED893009784C8F852 /* [CP] Check Pods Manifest.lock */,
 				30393145229BFAF500DA1E65 /* Sources */,
 				30393146229BFAF500DA1E65 /* Frameworks */,
 				30393147229BFAF500DA1E65 /* Resources */,
@@ -277,6 +303,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ED0884ED893009784C8F852 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LandmarkRemark-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30393145229BFAF500DA1E65 /* Sources */ = {
@@ -458,6 +509,7 @@
 		};
 		30393172229BFAF900DA1E65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -475,6 +527,7 @@
 		};
 		30393173229BFAF900DA1E65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
