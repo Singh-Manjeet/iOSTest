@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o1y-c5-f4Y">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login-->
+        <scene sceneID="t8I-cm-V4A">
+            <objects>
+                <viewController storyboardIdentifier="home" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3cu-uH-o2w" customClass="LoginViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aT2-Fk-cRe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="gf7-qj-0mP">
+                                <rect key="frame" x="22" y="110" width="370" height="244.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter username, It can be any unique / nick name you would like to have for this test app. Thanks" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ2-wk-xzl">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="64.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bvi-eL-PoG">
+                                        <rect key="frame" x="0.0" y="75.5" width="370" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="3cu-uH-o2w" id="TFo-hC-j5g"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ron-Ce-U5f">
+                                        <rect key="frame" x="0.0" y="116.5" width="370" height="128"/>
+                                        <state key="normal" image="loginButton_locked">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapLogin:" destination="3cu-uH-o2w" eventType="touchUpInside" id="EIp-Bj-8qd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gf7-qj-0mP" secondAttribute="trailing" constant="22" id="FHm-iI-RkI"/>
+                            <constraint firstItem="vN3-c7-Cui" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gf7-qj-0mP" secondAttribute="bottom" constant="22" id="SXr-0u-4hE"/>
+                            <constraint firstItem="gf7-qj-0mP" firstAttribute="top" secondItem="vN3-c7-Cui" secondAttribute="top" constant="22" id="b95-Gm-cq0"/>
+                            <constraint firstItem="gf7-qj-0mP" firstAttribute="leading" secondItem="vN3-c7-Cui" secondAttribute="leading" constant="22" id="sHZ-WI-UZT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vN3-c7-Cui"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="Oik-x7-V6P"/>
+                    <connections>
+                        <outlet property="loginButton" destination="Ron-Ce-U5f" id="0jA-1d-xRV"/>
+                        <outlet property="usernameTextField" destination="Bvi-eL-PoG" id="gW3-yG-zHW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fjq-Mn-TlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1171.0144927536232" y="0.6696428571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y8y-nv-MCr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1y-c5-f4Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SkL-ab-jDF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3cu-uH-o2w" kind="relationship" relationship="rootViewController" id="GT6-nY-RVr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPK-us-Icj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1923" y="1"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="loginButton_locked" width="128" height="128"/>
+    </resources>
+</document>

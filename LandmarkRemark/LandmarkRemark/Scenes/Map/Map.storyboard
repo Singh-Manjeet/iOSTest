@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MapViewController-->
+        <scene sceneID="aPU-r3-imw">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" title="MapViewController" id="bYO-ek-svp" customClass="MapViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nNe-Ja-TO4"/>
+                        <viewControllerLayoutGuide type="bottom" id="gqC-bj-Mjf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0bO-el-QGy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-S3-l6i">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <color key="tintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bYO-ek-svp" id="3gS-X8-AGP"/>
+                                </connections>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYa-fF-9Pf">
+                                <rect key="frame" x="4" y="818" width="406" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SOy-bM-Ofl"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GXU-g9-kxn"/>
+                                    <barButtonItem image="Location" id="7yF-Ls-Sv6">
+                                        <connections>
+                                            <action selector="centerToUserLocationTappedWithSender:" destination="bYO-ek-svp" id="XQJ-vN-Nze"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="p5V-MY-7r0"/>
+                                    <barButtonItem title="All Remarks" id="NDa-sv-2Vi">
+                                        <connections>
+                                            <action selector="centerToUserLocationTappedWithSender:" destination="bYO-ek-svp" id="PTd-Of-FPw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cYa-fF-9Pf" secondAttribute="trailing" constant="-16" id="4DI-J2-t1w"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="top" secondItem="0bO-el-QGy" secondAttribute="topMargin" id="87b-gu-3aJ"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leadingMargin" constant="-20" id="9tu-8q-ErO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1RW-S3-l6i" secondAttribute="trailing" constant="-20" id="Ri4-Kj-GBb"/>
+                            <constraint firstItem="cYa-fF-9Pf" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leadingMargin" constant="-16" id="Yls-4s-aCo"/>
+                            <constraint firstItem="gqC-bj-Mjf" firstAttribute="top" secondItem="cYa-fF-9Pf" secondAttribute="bottom" id="fsf-DX-63P"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="width" secondItem="0bO-el-QGy" secondAttribute="width" id="lue-2X-a7t"/>
+                            <constraint firstItem="cYa-fF-9Pf" firstAttribute="top" secondItem="1RW-S3-l6i" secondAttribute="bottom" id="x5Y-M6-lYk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="s40-v3-aeQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H4U-KV-79X">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="vEp-wc-zjr">
+                            <connections>
+                                <action selector="didTapLogout" destination="bYO-ek-svp" id="IPN-co-eQo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add Remark" id="6L3-jr-dum">
+                            <connections>
+                                <action selector="addNewEntryTappedWithSender:" destination="bYO-ek-svp" id="Ddb-AJ-Qmt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="1RW-S3-l6i" id="Rbv-Kr-CF1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQT-vb-ws4" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-771" y="-204"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Location" width="30" height="30"/>
+    </resources>
+</document>

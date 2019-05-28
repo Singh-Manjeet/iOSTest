@@ -1,9 +1,7 @@
 platform :ios, '9.0'
-use_modular_headers!
 
 target 'LandmarkRemark' do
-  # use_frameworks!
-  # not required 
+  use_frameworks!
   # Pods for LandmarkRemark
 
   pod 'RealmSwift'
