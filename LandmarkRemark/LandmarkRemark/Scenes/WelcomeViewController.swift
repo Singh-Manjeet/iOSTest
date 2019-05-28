@@ -34,6 +34,7 @@ class WelcomeViewController: UIViewController {
                                onCompletion: { [weak self](user, err) in
                     if let _ = user {
                         // will navigate to map screen
+                        // starting day 2
                     } else if let error = err {
                         fatalError(error.localizedDescription)
                     }

@@ -7,5 +7,6 @@ target 'LandmarkRemark' do
   # Pods for LandmarkRemark
 
   pod 'RealmSwift'
+  pod 'SwiftLint'
 
 end
