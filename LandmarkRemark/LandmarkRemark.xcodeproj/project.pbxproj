@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039314C229BFAF500DA1E65 /* AppDelegate.swift */; };
 		3039314F229BFAF500DA1E65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039314E229BFAF500DA1E65 /* LoginViewController.swift */; };
-		30393152229BFAF500DA1E65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30393150229BFAF500DA1E65 /* Main.storyboard */; };
+		30393152229BFAF500DA1E65 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30393150229BFAF500DA1E65 /* Login.storyboard */; };
 		30393154229BFAF900DA1E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30393153229BFAF900DA1E65 /* Assets.xcassets */; };
 		30393157229BFAF900DA1E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30393155229BFAF900DA1E65 /* LaunchScreen.storyboard */; };
 		30393162229BFAF900DA1E65 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30393161229BFAF900DA1E65 /* LandmarkRemarkTests.swift */; };
@@ -25,9 +25,12 @@
 		3039319B229E06C300DA1E65 /* UIStoryboard+Multiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039319A229E06C300DA1E65 /* UIStoryboard+Multiple.swift */; };
 		303931A0229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039319F229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift */; };
 		303931A2229E10A600DA1E65 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303931A1229E10A600DA1E65 /* Map.storyboard */; };
-		303931A4229E112300DA1E65 /* AddRemark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303931A3229E112300DA1E65 /* AddRemark.storyboard */; };
+		303931A4229E112300DA1E65 /* Remark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303931A3229E112300DA1E65 /* Remark.storyboard */; };
 		303931A6229E63AC00DA1E65 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303931A5229E63AC00DA1E65 /* Reusable.swift */; };
 		303931AB229E658100DA1E65 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303931AA229E658100DA1E65 /* LoginViewModel.swift */; };
+		30B2ACFE229F5E6C008F0AB4 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2ACFD229F5E6C008F0AB4 /* MapViewModel.swift */; };
+		30B2AD00229FFDA9008F0AB4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2ACFF229FFDA9008F0AB4 /* DataManager.swift */; };
+		30B2AD0222A008A5008F0AB4 /* AddRemarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0122A008A5008F0AB4 /* AddRemarkViewModel.swift */; };
 		AB11C7D0CA86CE97C3B19644 /* Pods_LandmarkRemark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351509C9FE2098B56527C9E3 /* Pods_LandmarkRemark.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +55,7 @@
 		30393149229BFAF500DA1E65 /* LandmarkRemark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarkRemark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3039314C229BFAF500DA1E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3039314E229BFAF500DA1E65 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		30393151229BFAF500DA1E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30393151229BFAF500DA1E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		30393153229BFAF900DA1E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30393156229BFAF900DA1E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30393158229BFAF900DA1E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,9 +76,12 @@
 		3039319A229E06C300DA1E65 /* UIStoryboard+Multiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Multiple.swift"; sourceTree = "<group>"; };
 		3039319F229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardIdentifier.swift"; sourceTree = "<group>"; };
 		303931A1229E10A600DA1E65 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
-		303931A3229E112300DA1E65 /* AddRemark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRemark.storyboard; sourceTree = "<group>"; };
+		303931A3229E112300DA1E65 /* Remark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remark.storyboard; sourceTree = "<group>"; };
 		303931A5229E63AC00DA1E65 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		303931AA229E658100DA1E65 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		30B2ACFD229F5E6C008F0AB4 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		30B2ACFF229FFDA9008F0AB4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		30B2AD0122A008A5008F0AB4 /* AddRemarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemarkViewModel.swift; sourceTree = "<group>"; };
 		351509C9FE2098B56527C9E3 /* Pods_LandmarkRemark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandmarkRemark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.debug.xcconfig"; sourceTree = "<group>"; };
 		706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 			children = (
 				30393186229C15E300DA1E65 /* Constants.swift */,
 				30393196229D72B700DA1E65 /* Router.swift */,
+				30B2ACFF229FFDA9008F0AB4 /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 				30393190229D70C600DA1E65 /* RemarkAnnotation.swift */,
 				30393194229D714000DA1E65 /* MapViewController.swift */,
 				303931A1229E10A600DA1E65 /* Map.storyboard */,
+				30B2ACFD229F5E6C008F0AB4 /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -223,7 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				3039318E229D702E00DA1E65 /* AddRemarkViewController.swift */,
-				303931A3229E112300DA1E65 /* AddRemark.storyboard */,
+				303931A3229E112300DA1E65 /* Remark.storyboard */,
+				30B2AD0122A008A5008F0AB4 /* AddRemarkViewModel.swift */,
 			);
 			path = Remark;
 			sourceTree = "<group>";
@@ -231,7 +240,7 @@
 		303931A9229E654200DA1E65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				30393150229BFAF500DA1E65 /* Main.storyboard */,
+				30393150229BFAF500DA1E65 /* Login.storyboard */,
 				3039314E229BFAF500DA1E65 /* LoginViewController.swift */,
 				303931AA229E658100DA1E65 /* LoginViewModel.swift */,
 			);
@@ -363,9 +372,9 @@
 			files = (
 				30393157229BFAF900DA1E65 /* LaunchScreen.storyboard in Resources */,
 				30393154229BFAF900DA1E65 /* Assets.xcassets in Resources */,
-				30393152229BFAF500DA1E65 /* Main.storyboard in Resources */,
+				30393152229BFAF500DA1E65 /* Login.storyboard in Resources */,
 				303931A2229E10A600DA1E65 /* Map.storyboard in Resources */,
-				303931A4229E112300DA1E65 /* AddRemark.storyboard in Resources */,
+				303931A4229E112300DA1E65 /* Remark.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +442,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3039314F229BFAF500DA1E65 /* LoginViewController.swift in Sources */,
+				30B2AD00229FFDA9008F0AB4 /* DataManager.swift in Sources */,
 				3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */,
 				30393191229D70C600DA1E65 /* RemarkAnnotation.swift in Sources */,
+				30B2AD0222A008A5008F0AB4 /* AddRemarkViewModel.swift in Sources */,
 				3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */,
 				30393199229E067800DA1E65 /* StoryboardIdentifiable.swift in Sources */,
 				30393197229D72B700DA1E65 /* Router.swift in Sources */,
@@ -443,6 +454,7 @@
 				30393187229C15E300DA1E65 /* Constants.swift in Sources */,
 				303931AB229E658100DA1E65 /* LoginViewModel.swift in Sources */,
 				3039318F229D702E00DA1E65 /* AddRemarkViewController.swift in Sources */,
+				30B2ACFE229F5E6C008F0AB4 /* MapViewModel.swift in Sources */,
 				3039319B229E06C300DA1E65 /* UIStoryboard+Multiple.swift in Sources */,
 				303931A0229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				30393195229D714000DA1E65 /* MapViewController.swift in Sources */,
@@ -481,12 +493,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		30393150229BFAF500DA1E65 /* Main.storyboard */ = {
+		30393150229BFAF500DA1E65 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				30393151229BFAF500DA1E65 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		30393155229BFAF900DA1E65 /* LaunchScreen.storyboard */ = {
@@ -622,6 +634,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LandmarkRemark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,7 +643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ManjeetWorkspace.LandmarkRemark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -640,6 +653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LandmarkRemark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,7 +662,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ManjeetWorkspace.LandmarkRemark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

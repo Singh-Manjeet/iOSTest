@@ -16,7 +16,7 @@ class RemarkAnnotation: NSObject, MKAnnotation {
     var subtitle: String?
     var remark: Remark?
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, remark: Remark? = nil) {
+    init(coordinate: CLLocationCoordinate2D, title: String? = "", subtitle: String? = "", remark: Remark? = nil) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle

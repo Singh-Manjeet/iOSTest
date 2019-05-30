@@ -16,10 +16,9 @@ class AddRemarkViewController: UIViewController {
     
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var descriptionTextField: UITextView!
-
-    private var realm: Realm!
     
-    var remark: Remark!
+    var remark: Remark?
+    var viewModel = AddRemarkViewModel()
     var selectedAnnotation: RemarkAnnotation!
     
     //MARK: - Validation
@@ -41,70 +40,54 @@ class AddRemarkViewController: UIViewController {
     }
     
     func fillTextFields() {
-        titleTextField.text = remark.title
-        descriptionTextField.text = remark.detail
-    }
-    
-    func updateRemark() {
-        try! realm.write {
-            self.remark.title = self.titleTextField.text!
-            self.remark.detail = self.descriptionTextField.text
-        }
+        
+        guard let annotation = selectedAnnotation else { return }
+        
+        titleTextField.text = annotation.title
+        descriptionTextField.text = annotation.remark?.detail
     }
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-        self.realm = try! Realm(configuration: config!)
+        
+        remark = selectedAnnotation.remark
+        navigationController?.navigationBar.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let remark = remark {
-            title = "Edit \(remark.title)"
+            title = remark.title
             fillTextFields()
+            navigationItem.rightBarButtonItem?.title = "Delete"
         } else {
             title = "Add Remark"
+            navigationItem.rightBarButtonItem?.title = "Add"
         }
     }
     
-    func addNewRemark() {
-        
-        try! realm.write {
-            let remark = Remark()
-            
-            remark.title = self.titleTextField.text! // 4
-            remark.detail = self.descriptionTextField.text
-            remark.locationLatitude = self.selectedAnnotation.coordinate.latitude
-            remark.locationLongitude = self.selectedAnnotation.coordinate.longitude
-            remark.username = UserDefaults.standard.value(forKey: Constants.Keys.username) as! String
-            remark.addedDate = Date()
-            realm.add(remark)
-            self.remark = remark
-        }
-    }
+    // MARK: - Action
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    @IBAction func addNewRemark() {
         
-        if validateFields() {
-            if remark != nil {
-                updateRemark()
-            } else {
-                addNewRemark()
-            }
-            return true
+        if let remarkToDelete = remark {
+            viewModel.updateRemarkDatabase(with: remarkToDelete, mode: .delete)
         } else {
-            return false
+            let newRemark = Remark()
+            newRemark.title = self.titleTextField.text! // 4
+            newRemark.detail = self.descriptionTextField.text
+            newRemark.locationLatitude = self.selectedAnnotation.coordinate.latitude
+            newRemark.locationLongitude = self.selectedAnnotation.coordinate.longitude
+            newRemark.username = UserDefaults.standard.value(forKey: Constants.Keys.username) as! String
+            newRemark.addedDate = Date()
+            self.remark = newRemark
+            
+            viewModel.updateRemarkDatabase(with: newRemark, mode: .add)
         }
-    }}
-
-//MARK: - UITextFieldDelegate
-extension AddRemarkViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
         
+        navigationController?.popViewController(animated: true)
     }
 }
 

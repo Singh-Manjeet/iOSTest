@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum RouterSegue {
     case map
     case addRemark
+    case viewRemark
 }
 
 protocol Routing {
@@ -24,11 +26,15 @@ class Router: Routing {
         switch segue {
         case .map:
             destinationViewController = Router.makeMapViewController()
-        case .addRemark:
-            destinationViewController = Router.makeAddRemarkViewController()
+            source.navigationController?.pushViewController(destinationViewController, animated: true)
+        case .addRemark, .viewRemark:
+            let destination = Router.makeAddRemarkViewController()
+            if let mapViewController = source as? MapViewController {
+                destination.selectedAnnotation = mapViewController.currentRemarkAnnotation == nil ? RemarkAnnotation(coordinate: mapViewController.userLocation.coordinate) : mapViewController.currentRemarkAnnotation!
+                source.navigationController?.pushViewController(destination, animated: true)
+            }
+            
         }
-        
-        source.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
 
@@ -41,7 +47,7 @@ private extension Router {
     }
     
     static func makeAddRemarkViewController() -> AddRemarkViewController {
-       return UIStoryboard(storyboard: .addRemark).instantiateViewController()
+       return UIStoryboard(storyboard: .remark).instantiateViewController()
     }
 }
 

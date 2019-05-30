@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var usernameTextField: UITextField!
     
-    private var viewModel: LoginViewModel!
+    var viewModel: LoginViewModel!
     
     // MARK: - View Life Cycle
     

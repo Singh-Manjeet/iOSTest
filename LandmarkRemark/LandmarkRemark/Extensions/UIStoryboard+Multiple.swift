@@ -14,7 +14,7 @@ extension UIStoryboard {
     
     enum Storyboard: String {
         case map
-        case addRemark
+        case remark
         
         var filename: String {
             return rawValue.capitalized

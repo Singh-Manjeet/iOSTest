@@ -23,54 +23,61 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-S3-l6i">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                 <color key="tintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="delegate" destination="bYO-ek-svp" id="3gS-X8-AGP"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYa-fF-9Pf">
-                                <rect key="frame" x="4" y="818" width="406" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="cYa-fF-9Pf">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="SOy-bM-Ofl"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GXU-g9-kxn"/>
-                                    <barButtonItem image="Location" id="7yF-Ls-Sv6">
+                                    <barButtonItem image="Location" landscapeImage="Location" id="7yF-Ls-Sv6">
                                         <connections>
-                                            <action selector="centerToUserLocationTappedWithSender:" destination="bYO-ek-svp" id="XQJ-vN-Nze"/>
+                                            <action selector="centerToUserLocationTappedWithSender:" destination="bYO-ek-svp" id="vet-KZ-TyB"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="p5V-MY-7r0"/>
-                                    <barButtonItem title="All Remarks" id="NDa-sv-2Vi">
-                                        <connections>
-                                            <action selector="centerToUserLocationTappedWithSender:" destination="bYO-ek-svp" id="PTd-Of-FPw"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="bookmarks" id="NDa-sv-2Vi"/>
                                 </items>
-                                <color key="tintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </toolbar>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onBoardingScreen" translatesAutoresizingMaskIntoConstraints="NO" id="apo-TC-wfM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cYa-fF-9Pf" secondAttribute="trailing" constant="-16" id="4DI-J2-t1w"/>
-                            <constraint firstItem="1RW-S3-l6i" firstAttribute="top" secondItem="0bO-el-QGy" secondAttribute="topMargin" id="87b-gu-3aJ"/>
-                            <constraint firstItem="1RW-S3-l6i" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leadingMargin" constant="-20" id="9tu-8q-ErO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1RW-S3-l6i" secondAttribute="trailing" constant="-20" id="Ri4-Kj-GBb"/>
-                            <constraint firstItem="cYa-fF-9Pf" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leadingMargin" constant="-16" id="Yls-4s-aCo"/>
+                            <constraint firstAttribute="trailing" secondItem="cYa-fF-9Pf" secondAttribute="trailing" id="4DI-J2-t1w"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="top" secondItem="0bO-el-QGy" secondAttribute="top" id="87b-gu-3aJ"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leading" id="9tu-8q-ErO"/>
+                            <constraint firstItem="1RW-S3-l6i" firstAttribute="trailing" secondItem="apo-TC-wfM" secondAttribute="trailing" id="DPG-dw-VqD"/>
+                            <constraint firstAttribute="trailing" secondItem="1RW-S3-l6i" secondAttribute="trailing" id="Ri4-Kj-GBb"/>
+                            <constraint firstItem="cYa-fF-9Pf" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leading" id="Yls-4s-aCo"/>
+                            <constraint firstItem="apo-TC-wfM" firstAttribute="top" secondItem="1RW-S3-l6i" secondAttribute="top" constant="44" id="bzq-PL-8Y2"/>
                             <constraint firstItem="gqC-bj-Mjf" firstAttribute="top" secondItem="cYa-fF-9Pf" secondAttribute="bottom" id="fsf-DX-63P"/>
-                            <constraint firstItem="1RW-S3-l6i" firstAttribute="width" secondItem="0bO-el-QGy" secondAttribute="width" id="lue-2X-a7t"/>
+                            <constraint firstItem="apo-TC-wfM" firstAttribute="leading" secondItem="1RW-S3-l6i" secondAttribute="leading" id="iNE-GW-p7U"/>
+                            <constraint firstItem="cYa-fF-9Pf" firstAttribute="top" secondItem="apo-TC-wfM" secondAttribute="bottom" id="lwC-cz-ERG"/>
                             <constraint firstItem="cYa-fF-9Pf" firstAttribute="top" secondItem="1RW-S3-l6i" secondAttribute="bottom" id="x5Y-M6-lYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s40-v3-aeQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="H4U-KV-79X">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="vEp-wc-zjr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didTapLogout" destination="bYO-ek-svp" id="IPN-co-eQo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add Remark" id="6L3-jr-dum">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6L3-jr-dum">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addNewEntryTappedWithSender:" destination="bYO-ek-svp" id="Ddb-AJ-Qmt"/>
                             </connections>
@@ -78,14 +85,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="1RW-S3-l6i" id="Rbv-Kr-CF1"/>
+                        <outlet property="onboardingView" destination="apo-TC-wfM" id="xcn-rJ-jcn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQT-vb-ws4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="-204"/>
+            <point key="canvasLocation" x="-771.01449275362324" y="-204.24107142857142"/>
         </scene>
     </scenes>
     <resources>
         <image name="Location" width="30" height="30"/>
+        <image name="onBoardingScreen" width="689" height="1223"/>
     </resources>
 </document>

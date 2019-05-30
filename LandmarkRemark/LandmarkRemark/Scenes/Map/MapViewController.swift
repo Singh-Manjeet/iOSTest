@@ -8,79 +8,62 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 import RealmSwift
 
 
 class MapViewController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
-    
-    let kDistanceMeters: CLLocationDistance = 500
+    // MARK: - IBOutlets & Vars
+    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var onboardingView: UIImageView!
     
     private var locationManager = CLLocationManager()
-    private var userLocated = false
-    private var lastAnnotation: MKAnnotation!
-    private var realm: Realm!
-    private var remarks = try! Realm().objects(Remark.self)
-    
-    
-    //MARK: - Helper Methods
+    var mapViewModel: MapViewModel!
+    var userLocation: CLLocation!
+    var currentRemarkAnnotation: RemarkAnnotation?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    func centerToUsersLocation() {
-        let center = mapView.userLocation.coordinate
-        let zoomRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, latitudinalMeters: kDistanceMeters, longitudinalMeters: kDistanceMeters)
-        mapView.setRegion(zoomRegion, animated: true)
-    }
-    
-    func addNewPin() {
-        if lastAnnotation != nil {
-            let alertController = UIAlertController(title: "Annotation already dropped", message: "There is an annotation on screen. Try dragging it if you want to change its location!", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { alert in
-                alertController.dismiss(animated: true, completion: nil)
-            }
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
-            
-        } else {
-            let remark = RemarkAnnotation(coordinate: mapView.centerCoordinate, title: "Empty", subtitle: "Uncategorized")
-            
-            mapView.addAnnotation(remark)
-            lastAnnotation = remark
-        }
-    }
-    
-    //MARK: - View Lifecycle
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Map"
-        
-        locationManager.delegate = self
         navigationController?.navigationBar.barStyle = .black
+
+        locationManager.delegate = self
+        mapViewModel = MapViewModel(with: locationManager)
+        mapViewModel.populate(mapView)
+      
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         } else {
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-        self.realm = try! Realm(configuration: config!)
-        populateMap()
+        mapView.removeAnnotations(mapView.annotations)
+        for remark in DataManager.sharedInstance.getRemarksFromDatabase().enumerated() {
+            let locationCoordinates = CLLocationCoordinate2D(latitude: remark.element.locationLatitude,
+                                                             longitude: remark.element.locationLongitude)
+            let annotation = RemarkAnnotation(coordinate: locationCoordinates,
+                                              title: remark.element.title ,
+                                              subtitle: remark.element.username ,
+                                              remark: remark.element)
+            
+            mapView.addAnnotation(annotation)
+        }
     }
     
-    //MARK: - Actions & Segues
-    @IBAction func centerToUserLocationTappedWith(sender: AnyObject) {
-        centerToUsersLocation()
-    }
-    
-    @IBAction func addNewEntryTapped(sender: AnyObject) {
-        addNewPin()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hideOnboarding()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,30 +74,17 @@ class MapViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromAddNewEntry(segue: UIStoryboardSegue) {
-        
-        let addNewEntryController = segue.source as! AddRemarkViewController
-        let addedRemark = addNewEntryController.remark
-        let addedRemarkCoordinate = CLLocationCoordinate2D(latitude: addedRemark!.locationLatitude, longitude: addedRemark!.locationLongitude)
-        
-        if let lastAnnotation = lastAnnotation {
-            mapView.removeAnnotation(lastAnnotation)
-        } else {
-            for annotation in mapView.annotations {
-                if let currentAnnotation = annotation as? RemarkAnnotation {
-                    if currentAnnotation.coordinate.latitude == addedRemarkCoordinate.latitude && currentAnnotation.coordinate.longitude == addedRemarkCoordinate.longitude {
-                        mapView.removeAnnotation(currentAnnotation)
-                        break
-                    }
-                }
-            }
-        }
-        
-        
-        let annotation = RemarkAnnotation(coordinate: addedRemarkCoordinate, title: addedRemark!.title , subtitle: addedRemark!.username , remark: addedRemark)
-        
-        mapView.addAnnotation(annotation)
-        lastAnnotation = nil;
+    // MARK: - IBActions
+    
+    @IBAction func centerToUserLocationTappedWith(sender: AnyObject) {
+        displayUserLocation(locationManager.location)
+    }
+    
+    @IBAction func addNewEntryTapped(sender: AnyObject) {
+        let coordinates =  mapView.userLocation.coordinate
+        userLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        currentRemarkAnnotation = nil
+        Router().perform(.addRemark, from: self)
     }
     
     @IBAction func didTapLogout() {
@@ -131,22 +101,6 @@ class MapViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func populateMap() {
-        mapView.removeAnnotations(mapView.annotations)
-        
-        remarks = self.realm.objects(Remark.self)
-        
-        // Create annotations for each one
-        for remark in remarks { // 3
-            let coord = CLLocationCoordinate2D(latitude: remark.locationLatitude, longitude: remark.locationLongitude);
-            let remarkAnnotation = RemarkAnnotation(coordinate: coord,
-                                                    title: remark.title ,
-                                                    subtitle: remark.username ,
-                                                    remark: remark)
-            mapView.addAnnotation(remarkAnnotation) // 4
-        }
-    }
-    
 }
 
 //MARK: - CLLocationManager Delegate
@@ -154,6 +108,10 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         status != .notDetermined ? mapView.showsUserLocation = true : print("Authorization to use location data denied")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        displayUserLocation(locations.first)
     }
 }
 
@@ -177,7 +135,7 @@ extension MapViewController: MKMapViewDelegate {
                 let detailDisclosure = UIButton(type: UIButton.ButtonType.detailDisclosure)
                 annotationView.rightCalloutAccessoryView = detailDisclosure
                 
-                if currentAnnotation.title == "Empty" {
+                if currentAnnotation.title == "Please this landmark to give it a name." {
                     annotationView.isDraggable = true
                 }
                 
@@ -202,8 +160,9 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let remarkAnnotation =  view.annotation as? RemarkAnnotation {
-            performSegue(withIdentifier: "AddRemark", sender: remarkAnnotation)
+        if let annotation =  view.annotation as? RemarkAnnotation {
+            currentRemarkAnnotation = annotation
+            Router().perform(.addRemark, from: self)
         }
     }
     
@@ -212,4 +171,49 @@ extension MapViewController: MKMapViewDelegate {
             view.dragState = .none
         }
     }
+}
+
+ //MARK: - Helper Methods
+
+private extension MapViewController {
+    
+    func displayUserLocation(_ location: CLLocation?) {
+        
+        guard let location = location else { return }
+        
+        let center = location.coordinate
+        let zoomRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, latitudinalMeters: mapViewModel.kDistanceMeters, longitudinalMeters: mapViewModel.kDistanceMeters)
+        mapView.setRegion(zoomRegion, animated: true)
+    }
+    
+    func addNewPin() {
+        if mapViewModel.lastAnnotation != nil {
+            let alertController = UIAlertController(title: "Remark Pin has been dropped already", message: "There is an Remark Pin on screen. Please try dragging it to change the location!", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { alert in
+                alertController.dismiss(animated: true, completion: nil)
+            }
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+        } else {
+            let remark = RemarkAnnotation(coordinate: mapView.centerCoordinate, title: "Please tap this landmark to give it a name", subtitle: "Anonymous")
+            
+            mapView.addAnnotation(remark)
+            mapViewModel.lastAnnotation = remark
+        }
+    }
+    
+    func hideOnboarding() {
+        
+        UIView.animate(withDuration: 3.0,
+                       animations: { [weak self] in
+                        
+                        guard let strongSelf = self else { return }
+                        strongSelf.onboardingView.alpha = 0
+            },
+                       completion: { [weak self] _ in
+                        
+                        guard let strongSelf = self else { return }
+                        strongSelf.onboardingView.isHidden = true
+        })}
 }
