@@ -34,7 +34,6 @@ class MapViewController: UIViewController {
         title = "Map"
         navigationController?.navigationBar.barStyle = .black
 
-        locationManager.delegate = self
         mapViewModel = MapViewModel(with: locationManager)
         mapViewModel.populate(mapView)
       
@@ -43,6 +42,9 @@ class MapViewController: UIViewController {
         } else {
             locationManager.startUpdatingLocation()
         }
+        
+         locationManager.delegate = self
+         locationManager.requestLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,25 +68,21 @@ class MapViewController: UIViewController {
         hideOnboarding()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "AddRemark") {
-            let controller = segue.destination as! AddRemarkViewController
-            let remarkAnnotation = sender as! RemarkAnnotation
-            controller.selectedAnnotation = remarkAnnotation
-        }
-    }
-    
     // MARK: - IBActions
     
     @IBAction func centerToUserLocationTappedWith(sender: AnyObject) {
         displayUserLocation(locationManager.location)
     }
     
-    @IBAction func addNewEntryTapped(sender: AnyObject) {
+    @IBAction func didTapAddNewRemark(sender: AnyObject) {
         let coordinates =  mapView.userLocation.coordinate
         userLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         currentRemarkAnnotation = nil
         Router().perform(.addRemark, from: self)
+    }
+    
+    @IBAction func didTapViewSavedRemarks(sender: AnyObject) {
+        Router().perform(.remarksList, from: self)
     }
     
     @IBAction func didTapLogout() {
@@ -111,7 +109,13 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        displayUserLocation(locations.first)
+        if let location = locations.first {
+           displayUserLocation(location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
 }
 
@@ -205,15 +209,17 @@ private extension MapViewController {
     
     func hideOnboarding() {
         
-        UIView.animate(withDuration: 3.0,
-                       animations: { [weak self] in
-                        
-                        guard let strongSelf = self else { return }
-                        strongSelf.onboardingView.alpha = 0
-            },
-                       completion: { [weak self] _ in
-                        
-                        guard let strongSelf = self else { return }
-                        strongSelf.onboardingView.isHidden = true
-        })}
+        UIView.animateKeyframes(withDuration: 0.5,
+                                delay: 3.0,
+                                options: .allowUserInteraction,
+                                animations: { [weak self] in
+                                    
+                                    guard let strongSelf = self else { return }
+                                    strongSelf.onboardingView.alpha = 0
+            }, completion: { [weak self] _ in
+                
+                guard let strongSelf = self else { return }
+                strongSelf.onboardingView.isHidden = true
+        })
+    }
 }

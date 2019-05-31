@@ -31,6 +31,14 @@
 		30B2ACFE229F5E6C008F0AB4 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2ACFD229F5E6C008F0AB4 /* MapViewModel.swift */; };
 		30B2AD00229FFDA9008F0AB4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2ACFF229FFDA9008F0AB4 /* DataManager.swift */; };
 		30B2AD0222A008A5008F0AB4 /* AddRemarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0122A008A5008F0AB4 /* AddRemarkViewModel.swift */; };
+		30B2AD0522A0B6EB008F0AB4 /* RemarksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0422A0B6EB008F0AB4 /* RemarksListViewController.swift */; };
+		30B2AD0722A0B762008F0AB4 /* RemarksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0622A0B762008F0AB4 /* RemarksListViewModel.swift */; };
+		30B2AD0922A0B7BD008F0AB4 /* RemarksListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0822A0B7BD008F0AB4 /* RemarksListDataSource.swift */; };
+		30B2AD0B22A0B8CB008F0AB4 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0A22A0B8CB008F0AB4 /* DataState.swift */; };
+		30B2AD0D22A0B9BC008F0AB4 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0C22A0B9BC008F0AB4 /* RemarkTableViewCell.swift */; };
+		30B2AD1022A0BBB2008F0AB4 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD0F22A0BBB2008F0AB4 /* EmptyTableViewCell.swift */; };
+		30B2AD1222A0BEFF008F0AB4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2AD1122A0BEFF008F0AB4 /* Reachability.swift */; };
+		30B2AD1422A0CA44008F0AB4 /* Remarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B2AD1322A0CA44008F0AB4 /* Remarks.storyboard */; };
 		AB11C7D0CA86CE97C3B19644 /* Pods_LandmarkRemark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351509C9FE2098B56527C9E3 /* Pods_LandmarkRemark.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +90,14 @@
 		30B2ACFD229F5E6C008F0AB4 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		30B2ACFF229FFDA9008F0AB4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		30B2AD0122A008A5008F0AB4 /* AddRemarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemarkViewModel.swift; sourceTree = "<group>"; };
+		30B2AD0422A0B6EB008F0AB4 /* RemarksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksListViewController.swift; sourceTree = "<group>"; };
+		30B2AD0622A0B762008F0AB4 /* RemarksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksListViewModel.swift; sourceTree = "<group>"; };
+		30B2AD0822A0B7BD008F0AB4 /* RemarksListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksListDataSource.swift; sourceTree = "<group>"; };
+		30B2AD0A22A0B8CB008F0AB4 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
+		30B2AD0C22A0B9BC008F0AB4 /* RemarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkTableViewCell.swift; sourceTree = "<group>"; };
+		30B2AD0F22A0BBB2008F0AB4 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		30B2AD1122A0BEFF008F0AB4 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		30B2AD1322A0CA44008F0AB4 /* Remarks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remarks.storyboard; sourceTree = "<group>"; };
 		351509C9FE2098B56527C9E3 /* Pods_LandmarkRemark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandmarkRemark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB96B9447C6BDFFBA67673C /* Pods-LandmarkRemark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.debug.xcconfig"; sourceTree = "<group>"; };
 		706207C7FDB43DD147B7343A /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +191,7 @@
 				3039317D229BFE6000DA1E65 /* Launcher.swift */,
 				303931A9229E654200DA1E65 /* Home */,
 				303931A7229E654200DA1E65 /* Map */,
+				30B2AD0322A0B5A1008F0AB4 /* RemarksList */,
 				303931A8229E654200DA1E65 /* Remark */,
 			);
 			path = Scenes;
@@ -212,6 +229,8 @@
 			children = (
 				3039319A229E06C300DA1E65 /* UIStoryboard+Multiple.swift */,
 				3039319F229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift */,
+				30B2AD0A22A0B8CB008F0AB4 /* DataState.swift */,
+				30B2AD1122A0BEFF008F0AB4 /* Reachability.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +264,27 @@
 				303931AA229E658100DA1E65 /* LoginViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		30B2AD0322A0B5A1008F0AB4 /* RemarksList */ = {
+			isa = PBXGroup;
+			children = (
+				30B2AD0E22A0BBA5008F0AB4 /* Cell */,
+				30B2AD0422A0B6EB008F0AB4 /* RemarksListViewController.swift */,
+				30B2AD0622A0B762008F0AB4 /* RemarksListViewModel.swift */,
+				30B2AD0822A0B7BD008F0AB4 /* RemarksListDataSource.swift */,
+				30B2AD1322A0CA44008F0AB4 /* Remarks.storyboard */,
+			);
+			path = RemarksList;
+			sourceTree = "<group>";
+		};
+		30B2AD0E22A0BBA5008F0AB4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				30B2AD0C22A0B9BC008F0AB4 /* RemarkTableViewCell.swift */,
+				30B2AD0F22A0BBB2008F0AB4 /* EmptyTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8022B35258E26C4251259E2A /* Frameworks */ = {
@@ -372,6 +412,7 @@
 			files = (
 				30393157229BFAF900DA1E65 /* LaunchScreen.storyboard in Resources */,
 				30393154229BFAF900DA1E65 /* Assets.xcassets in Resources */,
+				30B2AD1422A0CA44008F0AB4 /* Remarks.storyboard in Resources */,
 				30393152229BFAF500DA1E65 /* Login.storyboard in Resources */,
 				303931A2229E10A600DA1E65 /* Map.storyboard in Resources */,
 				303931A4229E112300DA1E65 /* Remark.storyboard in Resources */,
@@ -445,19 +486,26 @@
 				30B2AD00229FFDA9008F0AB4 /* DataManager.swift in Sources */,
 				3039317E229BFE6000DA1E65 /* Launcher.swift in Sources */,
 				30393191229D70C600DA1E65 /* RemarkAnnotation.swift in Sources */,
+				30B2AD0722A0B762008F0AB4 /* RemarksListViewModel.swift in Sources */,
 				30B2AD0222A008A5008F0AB4 /* AddRemarkViewModel.swift in Sources */,
 				3039314D229BFAF500DA1E65 /* AppDelegate.swift in Sources */,
+				30B2AD1022A0BBB2008F0AB4 /* EmptyTableViewCell.swift in Sources */,
 				30393199229E067800DA1E65 /* StoryboardIdentifiable.swift in Sources */,
 				30393197229D72B700DA1E65 /* Router.swift in Sources */,
+				30B2AD0B22A0B8CB008F0AB4 /* DataState.swift in Sources */,
 				303931A6229E63AC00DA1E65 /* Reusable.swift in Sources */,
+				30B2AD0922A0B7BD008F0AB4 /* RemarksListDataSource.swift in Sources */,
 				30393193229D70E100DA1E65 /* Remark.swift in Sources */,
+				30B2AD1222A0BEFF008F0AB4 /* Reachability.swift in Sources */,
 				30393187229C15E300DA1E65 /* Constants.swift in Sources */,
 				303931AB229E658100DA1E65 /* LoginViewModel.swift in Sources */,
 				3039318F229D702E00DA1E65 /* AddRemarkViewController.swift in Sources */,
 				30B2ACFE229F5E6C008F0AB4 /* MapViewModel.swift in Sources */,
+				30B2AD0522A0B6EB008F0AB4 /* RemarksListViewController.swift in Sources */,
 				3039319B229E06C300DA1E65 /* UIStoryboard+Multiple.swift in Sources */,
 				303931A0229E082B00DA1E65 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				30393195229D714000DA1E65 /* MapViewController.swift in Sources */,
+				30B2AD0D22A0B9BC008F0AB4 /* RemarkTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

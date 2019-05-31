@@ -43,7 +43,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="p5V-MY-7r0"/>
-                                    <barButtonItem systemItem="bookmarks" id="NDa-sv-2Vi"/>
+                                    <barButtonItem systemItem="bookmarks" id="NDa-sv-2Vi">
+                                        <connections>
+                                            <action selector="didTapViewSavedRemarksWithSender:" destination="bYO-ek-svp" id="Cc4-kS-lLR"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" red="0.38839852489999999" green="0.62682872609999996" blue="0.82937985749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -61,9 +65,9 @@
                             <constraint firstItem="1RW-S3-l6i" firstAttribute="trailing" secondItem="apo-TC-wfM" secondAttribute="trailing" id="DPG-dw-VqD"/>
                             <constraint firstAttribute="trailing" secondItem="1RW-S3-l6i" secondAttribute="trailing" id="Ri4-Kj-GBb"/>
                             <constraint firstItem="cYa-fF-9Pf" firstAttribute="leading" secondItem="0bO-el-QGy" secondAttribute="leading" id="Yls-4s-aCo"/>
-                            <constraint firstItem="apo-TC-wfM" firstAttribute="top" secondItem="1RW-S3-l6i" secondAttribute="top" constant="44" id="bzq-PL-8Y2"/>
                             <constraint firstItem="gqC-bj-Mjf" firstAttribute="top" secondItem="cYa-fF-9Pf" secondAttribute="bottom" id="fsf-DX-63P"/>
                             <constraint firstItem="apo-TC-wfM" firstAttribute="leading" secondItem="1RW-S3-l6i" secondAttribute="leading" id="iNE-GW-p7U"/>
+                            <constraint firstItem="apo-TC-wfM" firstAttribute="top" secondItem="nNe-Ja-TO4" secondAttribute="bottom" id="ijd-cq-UjG"/>
                             <constraint firstItem="cYa-fF-9Pf" firstAttribute="top" secondItem="apo-TC-wfM" secondAttribute="bottom" id="lwC-cz-ERG"/>
                             <constraint firstItem="cYa-fF-9Pf" firstAttribute="top" secondItem="1RW-S3-l6i" secondAttribute="bottom" id="x5Y-M6-lYk"/>
                         </constraints>
@@ -79,7 +83,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6L3-jr-dum">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addNewEntryTappedWithSender:" destination="bYO-ek-svp" id="Ddb-AJ-Qmt"/>
+                                <action selector="didTapAddNewRemarkWithSender:" destination="bYO-ek-svp" id="i5d-Hg-zlR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

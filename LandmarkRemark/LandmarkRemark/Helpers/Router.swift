@@ -13,6 +13,7 @@ enum RouterSegue {
     case map
     case addRemark
     case viewRemark
+    case remarksList
 }
 
 protocol Routing {
@@ -26,6 +27,9 @@ class Router: Routing {
         switch segue {
         case .map:
             destinationViewController = Router.makeMapViewController()
+            source.navigationController?.pushViewController(destinationViewController, animated: true)
+        case .remarksList:
+            destinationViewController = Router.makeRemarksListViewController()
             source.navigationController?.pushViewController(destinationViewController, animated: true)
         case .addRemark, .viewRemark:
             let destination = Router.makeAddRemarkViewController()
@@ -44,6 +48,10 @@ private extension Router {
     
     static func makeMapViewController() -> MapViewController {
         return UIStoryboard(storyboard: .map).instantiateViewController()
+    }
+    
+    static func makeRemarksListViewController() -> RemarksListViewController {
+        return UIStoryboard(storyboard: .remarks).instantiateViewController()
     }
     
     static func makeAddRemarkViewController() -> AddRemarkViewController {

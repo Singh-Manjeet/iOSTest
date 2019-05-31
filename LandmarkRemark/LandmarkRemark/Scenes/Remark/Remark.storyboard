@@ -51,7 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="yof-hS-SjK"/>
                     </view>
                     <navigationItem key="navigationItem" id="WQz-Hp-HHd">
-                        <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="frE-wF-dJ1">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="frE-wF-dJ1">
                             <connections>
                                 <action selector="addNewRemark" destination="u4U-AT-Gie" id="JEp-BX-5Dv"/>
                             </connections>

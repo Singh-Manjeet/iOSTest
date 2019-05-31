@@ -59,7 +59,7 @@ class AddRemarkViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let remark = remark {
-            title = remark.title
+            title = remark.username
             fillTextFields()
             navigationItem.rightBarButtonItem?.title = "Delete"
         } else {
