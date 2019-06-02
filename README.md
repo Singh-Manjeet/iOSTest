@@ -14,7 +14,7 @@
 
 ## Approach Used
 Implemented the complete functionality mentioned in the User Stories.
-1. Created an appropraite architecture, i.e. MVVM and extended it with a Router.
+1. Created an appropriate architecture, i.e. MVVM and extended it with a Router.
 2. As suggested, i did use Realm Cloud - Trial for Data persistance, otherwise i would have used CoreData.
 But i found Realm very cool.
 3. To enable the User to view or delete the remarks added earlier, I have used a separate view controller ( Instead of just showing these over Map), Which offer better user convenience. 
@@ -29,7 +29,7 @@ But i found Realm very cool.
 Combined hours : 12-13 Hours
 
 ## Known Issues : 
-Have not spent time on Unit tests.  But i can implement appropraite tests  :-)
+Have not spent time on Unit tests.  But i can implement appropriate tests  :-)
 
 
 ## Swift Language Version Used:
