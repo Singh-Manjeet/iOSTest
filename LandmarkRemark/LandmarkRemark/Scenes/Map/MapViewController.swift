@@ -14,11 +14,13 @@ import RealmSwift
 class MapViewController: UIViewController {
     
     // MARK: - IBOutlets & Vars
+    
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var onboardingView: UIImageView!
     
     private var locationManager = CLLocationManager()
-    var mapViewModel: MapViewModel!
+    private var mapViewModel: MapViewModel!
+    
     var userLocation: CLLocation!
     var currentRemarkAnnotation: RemarkAnnotation?
     
@@ -33,42 +35,19 @@ class MapViewController: UIViewController {
         
         title = "Map"
         navigationController?.navigationBar.barStyle = .black
-
+        
         mapViewModel = MapViewModel(with: locationManager)
         mapViewModel.populate(mapView)
-      
-        if CLLocationManager.authorizationStatus() == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        } else {
-            locationManager.startUpdatingLocation()
-        }
-        
-         locationManager.delegate = self
-         locationManager.requestLocation()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mapView.removeAnnotations(mapView.annotations)
-        for remark in DataManager.sharedInstance.getRemarksFromDatabase().enumerated() {
-            let locationCoordinates = CLLocationCoordinate2D(latitude: remark.element.locationLatitude,
-                                                             longitude: remark.element.locationLongitude)
-            let annotation = RemarkAnnotation(coordinate: locationCoordinates,
-                                              title: remark.element.title ,
-                                              subtitle: remark.element.username ,
-                                              remark: remark.element)
-            
-            mapView.addAnnotation(annotation)
-        }
+        requestLocationUpdates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        mapViewModel.populate(mapView)
         hideOnboarding()
     }
     
-    // MARK: - IBActions
+    // MARK: - Actions
     
     @IBAction func centerToUserLocationTappedWith(sender: AnyObject) {
         displayUserLocation(locationManager.location)
@@ -101,7 +80,8 @@ class MapViewController: UIViewController {
     
 }
 
-//MARK: - CLLocationManager Delegate
+//MARK: - CLLocation Manager Delegate
+
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -110,7 +90,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-           displayUserLocation(location)
+            displayUserLocation(location)
         }
     }
     
@@ -120,6 +100,7 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 //MARK: - MKMapview Delegate
+
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -177,9 +158,33 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
- //MARK: - Helper Methods
+//MARK: - Helper Funtions
 
 private extension MapViewController {
+    func requestLocationUpdates() {
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            locationManager.startUpdatingLocation()
+        }
+        
+        locationManager.delegate = self
+        locationManager.requestLocation()
+    }
+    
+//    func populateMap() {
+//        mapView.removeAnnotations(mapView.annotations)
+//        for remark in DataManager.sharedInstance.getRemarksFromDatabase().enumerated() {
+//            let locationCoordinates = CLLocationCoordinate2D(latitude: remark.element.locationLatitude,
+//                                                             longitude: remark.element.locationLongitude)
+//            let annotation = RemarkAnnotation(coordinate: locationCoordinates,
+//                                              title: remark.element.title ,
+//                                              subtitle: remark.element.username ,
+//                                              remark: remark.element)
+//
+//            mapView.addAnnotation(annotation)
+//        }
+//    }
     
     func displayUserLocation(_ location: CLLocation?) {
         
@@ -216,6 +221,7 @@ private extension MapViewController {
                                     
                                     guard let strongSelf = self else { return }
                                     strongSelf.onboardingView.alpha = 0
+                                    
             }, completion: { [weak self] _ in
                 
                 guard let strongSelf = self else { return }

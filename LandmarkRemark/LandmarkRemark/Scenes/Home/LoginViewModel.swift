@@ -32,7 +32,7 @@ class LoginViewModel {
             SyncUser.logIn(with: creds, server: Constants.AUTH_URL,
                            onCompletion: { (user, err) in
                             if let _ = user {
-                                UserDefaults.standard.setValue(username, forKey: Constants.Keys.username)
+                                DataManager.sharedInstance.saveUserName(username)
                                 onCompletion(.newUser)
                             } else if let _ = err {
                                 onCompletion(.error)

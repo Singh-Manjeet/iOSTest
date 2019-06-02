@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var usernameTextField: UITextField!
     
-    var viewModel: LoginViewModel!
+    private var viewModel: LoginViewModel!
     
     // MARK: - View Life Cycle
     
@@ -37,6 +37,8 @@ class LoginViewController: UIViewController {
             performUnlockAnimation()
         }
     }
+    
+    // MARK: - Actions
     
     @IBAction func didTapLogin(_ sender: UIButton) {
         viewModel.login(username: usernameTextField.text) { [weak self] (loginState) in
@@ -75,6 +77,7 @@ private extension LoginViewController {
                        animations: { [weak self] in
                         
                         guard let strongSelf = self else { return }
+                        
                         strongSelf.setLoginButtonUserInteraction(enabled: true)
             },
                        completion: shouldRoute ? { [weak self] _ in

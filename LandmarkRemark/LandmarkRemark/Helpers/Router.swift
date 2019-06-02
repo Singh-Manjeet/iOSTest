@@ -20,10 +20,13 @@ protocol Routing {
     func perform(_ segue: RouterSegue, from source: UIViewController)
 }
 
+// MARK: - A Common place to navigate in between the app
+
 class Router: Routing {
     
     func perform(_ segue: RouterSegue, from source: UIViewController) {
         var destinationViewController: UIViewController!
+        
         switch segue {
         case .map:
             destinationViewController = Router.makeMapViewController()
@@ -42,7 +45,7 @@ class Router: Routing {
     }
 }
 
-// MARK: Helpers
+// MARK: - Helper Functions
 
 private extension Router {
     
@@ -55,7 +58,7 @@ private extension Router {
     }
     
     static func makeAddRemarkViewController() -> AddRemarkViewController {
-       return UIStoryboard(storyboard: .remark).instantiateViewController()
+        return UIStoryboard(storyboard: .remark).instantiateViewController()
     }
 }
 

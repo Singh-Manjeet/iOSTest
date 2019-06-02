@@ -9,8 +9,7 @@
 import UIKit
 
 class Launcher {
-    
-    // MARK: - Static methods
+
     static func launch(with window: UIWindow?) {
         if let navigationController = window?.rootViewController as? UINavigationController,
             let _ = navigationController.viewControllers.first as? LoginViewController {

@@ -9,68 +9,35 @@
 import UIKit
 import RealmSwift
 
-
 class AddRemarkViewController: UIViewController {
     
     // MARK: - Vars & IBOutlets
     
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var descriptionTextField: UITextView!
-    
-    var remark: Remark?
-    var viewModel = AddRemarkViewModel()
+   
     var selectedAnnotation: RemarkAnnotation!
-    
-    //MARK: - Validation
-    func validateFields() -> Bool {
-        
-        if titleTextField.text!.isEmpty || descriptionTextField.text!.isEmpty {
-            let alertController = UIAlertController(title: "Validation Error", message: "All fields must be filled", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { alert in
-                alertController.dismiss(animated: true, completion: nil)
-            }
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
-            
-            return false
-            
-        } else {
-            return true
-        }
-    }
-    
-    func fillTextFields() {
-        
-        guard let annotation = selectedAnnotation else { return }
-        
-        titleTextField.text = annotation.title
-        descriptionTextField.text = annotation.remark?.detail
-    }
+    private var remark: Remark?
+    private var viewModel = AddRemarkViewModel()
     
     //MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         remark = selectedAnnotation.remark
-        navigationController?.navigationBar.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let remark = remark {
-            title = remark.username
-            fillTextFields()
-            navigationItem.rightBarButtonItem?.title = "Delete"
-        } else {
-            title = "Add Remark"
-            navigationItem.rightBarButtonItem?.title = "Add"
-        }
+        updateUI()
     }
     
     // MARK: - Action
     
     @IBAction func addNewRemark() {
+        
+        guard isValidToProceed() else { return }
         
         if let remarkToDelete = remark {
             viewModel.updateRemarkDatabase(with: remarkToDelete, mode: .delete)
@@ -80,7 +47,7 @@ class AddRemarkViewController: UIViewController {
             newRemark.detail = self.descriptionTextField.text
             newRemark.locationLatitude = self.selectedAnnotation.coordinate.latitude
             newRemark.locationLongitude = self.selectedAnnotation.coordinate.longitude
-            newRemark.username = UserDefaults.standard.value(forKey: Constants.Keys.username) as! String
+            newRemark.username = DataManager.sharedInstance.userName
             newRemark.addedDate = Date()
             self.remark = newRemark
             
@@ -88,6 +55,62 @@ class AddRemarkViewController: UIViewController {
         }
         
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Helper Functions
+
+private extension AddRemarkViewController {
+    func updateUI() {
+        navigationController?.navigationBar.tintColor = .white
+        
+        if let remark = remark {
+            title = remark.username
+            fillTextFields()
+            descriptionTextField.isEditable = false
+            titleTextField.isUserInteractionEnabled = false
+            
+            // User can only delete the notes / remarks added by him/her
+            if DataManager.sharedInstance.canDelete(remark) {
+                navigationItem.rightBarButtonItem?.title = "Delete"
+            }else {
+                navigationItem.rightBarButtonItem?.title = ""
+                navigationItem.rightBarButtonItem = nil
+            }
+        } else {
+            title = "Add Remark"
+            navigationItem.rightBarButtonItem?.title = "Add"
+        }
+    }
+    
+    func isValidToProceed() -> Bool {
+        
+        guard let title = titleTextField.text,
+              let description = descriptionTextField.text,
+              !title.isEmpty,
+              !description.isEmpty else {
+            
+                let alertController = UIAlertController(title: "Oops !!", message: "All fields must be filled", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { alert in
+                alertController.dismiss(animated: true, completion: nil)
+            }
+                
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+            return false
+            
+        }
+        
+        return true
+    }
+    
+    func fillTextFields() {
+        
+        guard let annotation = selectedAnnotation else { return }
+        
+        titleTextField.text = annotation.title
+        descriptionTextField.text = annotation.remark?.detail
     }
 }
 

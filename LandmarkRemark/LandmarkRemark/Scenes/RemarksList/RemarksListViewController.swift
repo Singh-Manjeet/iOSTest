@@ -85,6 +85,13 @@ extension RemarksListViewController: RemarksListViewModelDelegate {
     
 }
 
+extension RemarksListViewController: RemarksListDataSourceDelegate {
+    func refreshTableView() {
+        viewModel.fetchRemarks()
+        tableView.reloadData()
+    }
+}
+
 // MARK: - UISearchResultsUpdating
 
 extension RemarksListViewController: UISearchResultsUpdating {
@@ -102,7 +109,7 @@ extension RemarksListViewController:  UISearchBarDelegate {
     }
 }
 
-// MARK: - Private Helpers
+// MARK: - Helper Functions
 
 private extension RemarksListViewController {
     func setupTableView() {
@@ -139,7 +146,7 @@ private extension RemarksListViewController {
     
     func setupDataSource() {
         viewModel = RemarksListViewModel(delegate: self)
-        dataSource = RemarksListDataSource(for: tableView)
+        dataSource = RemarksListDataSource(for: tableView, delegate: self)
     }
     
     func presentError(with message: String) {
@@ -160,7 +167,7 @@ private extension RemarksListViewController {
     func filterContent(for searchText: String?, scopeIndex: Int) {
         
         guard let textToSearch = searchText,
-            !textToSearch.isEmpty else {
+              !textToSearch.isEmpty else {
                 dataSource.mode = .normal
                 tableView.reloadData()
                 return

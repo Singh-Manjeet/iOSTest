@@ -35,6 +35,12 @@ protocol RemarksListDataSourceProtocol {
     func registerCells(for tableView: UITableView)
 }
 
+// MARK: - RemarksListDataSourceDelegate
+
+protocol RemarksListDataSourceDelegate: class {
+    func refreshTableView()
+}
+
 typealias ViewControllerDataState<T> = DataState<T, NSError>
 
 // MARK: - View Controller DataSource
@@ -51,10 +57,12 @@ class RemarksListDataSource: NSObject, RemarksListDataSourceProtocol {
     }
     
     private var cellTypes: [RemarkCellType] = []
+    weak var delegate: RemarksListDataSourceDelegate?
     
-    init(for tableView: UITableView) {
+    init(for tableView: UITableView, delegate: RemarksListDataSourceDelegate) {
         super.init()
         tableView.dataSource = self
+        self.delegate = delegate
         registerCells(for: tableView)
     }
     
@@ -104,6 +112,38 @@ extension RemarksListDataSource: UITableViewDataSource {
         case .empty:
             let emptyCell: EmptyTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
             return emptyCell
+        }
+    }
+}
+
+// MARK: - TableView Delegate
+
+extension RemarksListDataSource {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            
+            switch mode {
+            case .normal:
+                let cellTypeAtIndex = cellType(at: indexPath)
+                
+                switch cellTypeAtIndex {
+                case .remarks(let remark):
+                    
+                    if DataManager.sharedInstance.canDelete(remark) {
+                       DataManager.sharedInstance.deleteFromDatabase(object: remark)
+                    }
+
+                default: break
+                }
+                
+            default: break
+            }
+    
+            delegate?.refreshTableView()
         }
     }
 }

@@ -6,17 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LandmarkRemark/Scenes/Map/MapViewController.swift"
-            timestampString = "580914329.733863"
+            filePath = "LandmarkRemark/Helpers/DataManager.swift"
+            timestampString = "581182649.8909431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "init()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LandmarkRemark.DataManager.__allocating_init() -&gt; LandmarkRemark.DataManager"
+                  moduleName = "LandmarkRemark"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manjeet/Desktop/iOSTest/LandmarkRemark/LandmarkRemark/Helpers/DataManager.swift"
+                  timestampString = "581178034.0184211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LandmarkRemark.DataManager.() -&gt; LandmarkRemark.DataManager(in _C5FAED9162667665D7B2CCB502DA04FD).init() -&gt; LandmarkRemark.DataManager"
+                  moduleName = "LandmarkRemark"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manjeet/Desktop/iOSTest/LandmarkRemark/LandmarkRemark/Helpers/DataManager.swift"
+                  timestampString = "581178034.0211591"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "209">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

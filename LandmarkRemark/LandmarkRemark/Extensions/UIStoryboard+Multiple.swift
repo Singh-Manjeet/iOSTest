@@ -9,9 +9,7 @@
 import UIKit
 
 extension UIStoryboard {
-    
-    /// common place to have all storyboard in our application
-    
+
     enum Storyboard: String {
         case map
         case remark
@@ -23,7 +21,7 @@ extension UIStoryboard {
     }
     
     
-    // MARK: - Convenience Initializers
+    // MARK: - Convenience Initializer
     
     convenience init(storyboard: Storyboard, bundle: Bundle? = nil) {
         self.init(name: storyboard.filename, bundle: bundle)

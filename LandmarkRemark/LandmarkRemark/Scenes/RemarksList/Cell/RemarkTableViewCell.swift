@@ -14,10 +14,6 @@ class RemarkTableViewCell: UITableViewCell, Reusable {
     @IBOutlet private weak var detailLabel: UILabel!
     @IBOutlet private weak var usernameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     /**
      * To populate the cell with Remark
      * Parameters: Remark

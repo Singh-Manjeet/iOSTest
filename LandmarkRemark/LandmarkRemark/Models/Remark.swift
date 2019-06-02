@@ -8,6 +8,8 @@
 
 import RealmSwift
 
+// MARK: - Realm Object
+
 class Remark: Object {
     
     @objc dynamic var remarkId: String = UUID().uuidString

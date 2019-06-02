@@ -13,8 +13,13 @@ class DataManager {
     
     // MARK: - Vars
     
-    private var database: Realm
-    
+    typealias deletionBlock = ((_ isDeleted: Bool)->Void)?
+    var database: Realm
+   
+    var userName: String {
+        return UserDefaults.standard.value(forKey: Constants.Keys.username) as! String
+    }
+   
     // MARK: - Singleton
     static let sharedInstance = DataManager()
     
@@ -23,7 +28,7 @@ class DataManager {
         database = try! Realm(configuration: config!)
     }
     
-    // MARK: - Public functions
+    // MARK: - Public Functions
     
     func getRemarksFromDatabase() ->   Results<Remark> {
         let results: Results<Remark> = database.objects(Remark.self)
@@ -43,9 +48,30 @@ class DataManager {
         }
     }
     
-    func deleteFromDatabase(object: Remark)   {
+    func deleteFromDatabase(object: Remark, isSuccessful: deletionBlock = nil) {
+       
+        guard canDelete(object) else {
+            if let isSuccessfulBlock = isSuccessful {
+                return isSuccessfulBlock(false)
+            }
+            return
+        }
+        
         try! database.write {
             database.delete(object)
+            if let isSuccessfulBlock = isSuccessful {
+                return isSuccessfulBlock(true)
+            }
         }
+    }
+    
+    func saveUserName(_ username: String) {
+        UserDefaults.standard.set(username, forKey: Constants.Keys.username)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func canDelete(_ remark: Remark) -> Bool {
+        guard userName == remark.username else { return false }
+        return true
     }
 }

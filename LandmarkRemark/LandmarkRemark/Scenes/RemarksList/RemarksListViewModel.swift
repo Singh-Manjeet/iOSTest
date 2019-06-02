@@ -38,6 +38,7 @@ final class RemarksListViewModel {
     // MARK: - Public Function
     
     func fetchRemarks() {
+        
         guard Reachability.isConnectedToNetwork() else {
             self.state = .error(NSError(domain: Design.noInternet, code: 0, userInfo: nil))
             return
@@ -46,5 +47,16 @@ final class RemarksListViewModel {
         let remarks = DataManager.sharedInstance.getRemarksFromDatabase()
         let container = RemarksContainer(remarks: remarks)
         state = .loaded(container)
+    }
+    
+    //Used for unit test
+    func fetchRemarksForTesting() -> DataState<Results<Remark>, Error> {
+        
+        guard Reachability.isConnectedToNetwork() else {
+            return .error(NSError(domain: Design.noInternet, code: 0, userInfo: nil))
+        }
+        
+        let remarks = DataManager.sharedInstance.getRemarksFromDatabase()
+        return .loaded(remarks)
     }
 }

@@ -8,3 +8,8 @@ target 'LandmarkRemark' do
   pod 'SwiftLint'
 
 end
+
+target 'LandmarkRemarkUnitTests' do
+    inherit! :search_paths
+
+end

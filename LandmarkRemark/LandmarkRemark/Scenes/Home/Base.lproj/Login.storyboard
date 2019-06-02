@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="gf7-qj-0mP">
-                                <rect key="frame" x="22" y="110" width="370" height="289.5"/>
+                                <rect key="frame" x="22" y="110" width="370" height="225.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter username, It can be any unique / nick name you would like to have for this test app. Thanks" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ2-wk-xzl">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="64.5"/>
@@ -30,6 +30,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bvi-eL-PoG">
                                         <rect key="frame" x="0.0" y="75.5" width="370" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Username"/>
                                         <color key="textColor" red="0.28096911829999999" green="0.59645466420000004" blue="0.76185581570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -39,6 +40,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg6-Jp-ZnL">
                                         <rect key="frame" x="0.0" y="116.5" width="370" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="LoginButton"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="0.28096911829999999" green="0.59645466420000004" blue="0.76185581570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -47,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ron-Ce-U5f">
-                                        <rect key="frame" x="0.0" y="161.5" width="370" height="128"/>
+                                        <rect key="frame" x="0.0" y="161.5" width="370" height="64"/>
                                         <state key="normal" image="loginButton_locked">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -98,6 +100,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loginButton_locked" width="128" height="128"/>
+        <image name="loginButton_locked" width="64" height="64"/>
     </resources>
 </document>
