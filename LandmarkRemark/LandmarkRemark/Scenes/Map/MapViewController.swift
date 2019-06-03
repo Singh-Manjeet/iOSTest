@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
     @IBOutlet private weak var onboardingView: UIImageView!
     
     private var locationManager = CLLocationManager()
-    private var mapViewModel: MapViewModel!
+    private var mapViewModel =  MapViewModel()
     
     var userLocation: CLLocation!
     var currentRemarkAnnotation: RemarkAnnotation?
@@ -35,16 +35,15 @@ class MapViewController: UIViewController {
         
         title = "Map"
         navigationController?.navigationBar.barStyle = .black
-        
-        mapViewModel = MapViewModel(with: locationManager)
-        mapViewModel.populate(mapView)
-        requestLocationUpdates()
+        locationManager.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        requestLocationUpdates()
         mapViewModel.populate(mapView)
-        hideOnboarding()
+        hideOnboardingIfNeeded()
     }
     
     // MARK: - Actions
@@ -120,7 +119,7 @@ extension MapViewController: MKMapViewDelegate {
                 let detailDisclosure = UIButton(type: UIButton.ButtonType.detailDisclosure)
                 annotationView.rightCalloutAccessoryView = detailDisclosure
                 
-                if currentAnnotation.title == "Please this landmark to give it a name." {
+                if currentAnnotation.title == "Please tap this landmark to give it a name." {
                     annotationView.isDraggable = true
                 }
                 
@@ -168,23 +167,8 @@ private extension MapViewController {
             locationManager.startUpdatingLocation()
         }
         
-        locationManager.delegate = self
         locationManager.requestLocation()
     }
-    
-//    func populateMap() {
-//        mapView.removeAnnotations(mapView.annotations)
-//        for remark in DataManager.sharedInstance.getRemarksFromDatabase().enumerated() {
-//            let locationCoordinates = CLLocationCoordinate2D(latitude: remark.element.locationLatitude,
-//                                                             longitude: remark.element.locationLongitude)
-//            let annotation = RemarkAnnotation(coordinate: locationCoordinates,
-//                                              title: remark.element.title ,
-//                                              subtitle: remark.element.username ,
-//                                              remark: remark.element)
-//
-//            mapView.addAnnotation(annotation)
-//        }
-//    }
     
     func displayUserLocation(_ location: CLLocation?) {
         
@@ -195,24 +179,9 @@ private extension MapViewController {
         mapView.setRegion(zoomRegion, animated: true)
     }
     
-    func addNewPin() {
-        if mapViewModel.lastAnnotation != nil {
-            let alertController = UIAlertController(title: "Remark Pin has been dropped already", message: "There is an Remark Pin on screen. Please try dragging it to change the location!", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { alert in
-                alertController.dismiss(animated: true, completion: nil)
-            }
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
-            
-        } else {
-            let remark = RemarkAnnotation(coordinate: mapView.centerCoordinate, title: "Please tap this landmark to give it a name", subtitle: "Anonymous")
-            
-            mapView.addAnnotation(remark)
-            mapViewModel.lastAnnotation = remark
-        }
-    }
-    
-    func hideOnboarding() {
+    func hideOnboardingIfNeeded() {
+        
+        guard !onboardingView.isHidden else { return }
         
         UIView.animateKeyframes(withDuration: 0.5,
                                 delay: 3.0,

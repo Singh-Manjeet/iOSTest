@@ -9,8 +9,10 @@
 * Clone the project
 * Open `Terminal` and `cd` to the project directory
 * Run `pod install` 
-* Wait for it to finish
 * Open the `LandmarkRemark.xcworkspace` file
+
+## Realm Cloud Crendentials
+manjeetsinghdhanjal.83@gmail.com / Aa11bb22
 
 ## Approach Used
 Implemented the complete functionality mentioned in the User Stories.

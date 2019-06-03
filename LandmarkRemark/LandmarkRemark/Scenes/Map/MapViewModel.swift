@@ -14,13 +14,8 @@ import RealmSwift
 class MapViewModel {
     
     let kDistanceMeters: CLLocationDistance = 500
-    var locationManager = CLLocationManager()
     var userLocated = false
     var lastAnnotation: MKAnnotation!
-    
-    init(with locationManager: CLLocationManager) {
-        self.locationManager = locationManager
-    }
     
     func populate(_ map: MKMapView) {
         map.removeAnnotations(map.annotations)
