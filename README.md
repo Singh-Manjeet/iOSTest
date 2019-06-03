@@ -41,10 +41,6 @@ Xcode 10.2.1
 ## iPhone App:
 The app works on all iPhone's in Portrait only.
 
-## Reusable:
-Added appropriate extension for UITableViewCells reusability.
-The cleanest solution i have come up to dequeue the cells.
-
 ## Pods Used :
 Realm & RealmSwift - For backend support
 SwiftLint - to enforce Swift style and conventions
